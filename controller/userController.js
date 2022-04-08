@@ -1,5 +1,7 @@
 const User = require('../models/userModel.js');
 const nodemailer = require("nodemailer");
+const jwt = require("jsonwebtoken");
+const tokenVarification = require('../midelware/tokenVarification');
 
 
 exports.register = (request, response) => {
@@ -22,8 +24,13 @@ exports.login = (request, response) => {
             // console.log(result)
             if (result) {
                 // if (result.isBlocked == false) {
-                    if (result.isVerified)
-                        return response.status(200).json(result);
+                    if (result.isVerified){
+                        let payload = {subject:result._id};
+                        let token = jwt.sign(payload,"jkfhsdjfskfdsjfsddv");
+                        return response.status(200).json({
+                            CurrentUser:result,
+                            token:token
+                           });}
                     else {
                         let sender = "mohit.ibfoundation@gmail.com";
                         let reciever = result.email;
@@ -148,5 +155,3 @@ exports.updateProfile = (request,response)=>{
           return response.status(500).json({message: 'Something went wrong..'});
         });
 }
-
-

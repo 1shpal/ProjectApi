@@ -7,7 +7,7 @@ exports.addItem = (request,response)=>{
         itemQty:request.body.itemQty,
         itemPrice:request.body.itemPrice,
         itemDesc:request.body.itemDesc,
-        itemImage:"http://localhost:3000/images/"+request.file.filename,
+        itemImage:"https://firebasestorage.googleapis.com/v0/b/imageupload-783bb.appspot.com/o/"+request.file.filename+"?alt=media&token=vanshpal",
         itemDay: request.body.itemDay,
         itemCategoryId:request.body.itemcategoryId
     }).then(result=>{
@@ -33,7 +33,7 @@ exports.updateItem = (request,response)=>{
             itemPrice:request.body.itemPrice,
             itemDesc:request.body.itemDesc,
             itemDay:request.body.itemDay,
-            itemImage:"http://localhost:3000/images/"+request.file.filename,
+            itemImage:"https://firebasestorage.googleapis.com/v0/b/imageupload-783bb.appspot.com/o/"+request.file.filename+"?alt=media&token=vanshpal",
             itemCategoryId:request.body.itemcategoryId
         }}).then(result=>{
             if(result.modifiedCount)

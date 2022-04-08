@@ -4,7 +4,7 @@ const port = process.env.PORT || 3000;
 exports.addCategory=(request,response)=>{
     Category.create({
         catname:request.body.catname,
-        catImage:"http://localhost:3000/images/"+request.file.filename
+        catImage: "https://firebasestorage.googleapis.com/v0/b/imageupload-783bb.appspot.com/o/"+request.file.filename+"?alt=media&token=vanshpal"
     }).then(result=>{
         return response.status(200).json(result);
     }).catch(err=>{
@@ -17,7 +17,7 @@ exports.updateCategory = (request,response)=>{
         {
             $set:{
                 catname: request.body.catname,
-                catImage: "http://localhost:3000/images/"+request.file.filename
+                catImage: "https://firebasestorage.googleapis.com/v0/b/imageupload-783bb.appspot.com/o/"+request.file.filename+"?alt=media&token=vanshpal"
             }
         }).then(result=>{
              if(result.modifiedCount)
