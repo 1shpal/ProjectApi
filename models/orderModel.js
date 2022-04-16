@@ -24,6 +24,7 @@ const orderSchema = new mongoose.Schema({
             qty: Number
         }
     ]
+    
 });
 
 module.exports = mongoose.model("orders", orderSchema);
