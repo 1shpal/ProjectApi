@@ -1,5 +1,6 @@
 const Order = require('../models/orderModel');
 const nodemailer = require("nodemailer");
+const User = require("../models/userModel");
 exports.placeOrder = (request,response) =>{
     Order.create({
         userId:request.body.userId,
@@ -38,7 +39,8 @@ exports.orderHistory = (request,response) =>{
 }
 
 exports.sendReceipt =(request,response)=>{
-    Order.findOne({email: request.body.email, password: request.body.password})
+    let total = request.body.total;
+    User.findOne({email: request.body.email})
     .then(result => {
         // console.log(result)
         if (result) {
@@ -47,9 +49,9 @@ exports.sendReceipt =(request,response)=>{
                     return response.status(200).json(result);
                 else {
                     let sender = "mohit.ibfoundation@gmail.com";
-                    let reciever = "mohit.ibfoundation@gmail.com";
+                    let reciever = result.email;
                     let subject = "Receive order Receipt";
-                    let message = "http://localhost:3000/user/send-receipt/" + result._id;
+                    let message = "totel amount = " + total;
 
                     const transporter = nodemailer.createTransport({
                         service: 'gmail',

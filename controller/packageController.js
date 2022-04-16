@@ -9,7 +9,7 @@ exports.addPackage=(request,response)=>{
         packagePrice:request.body.packagePrice,
         packageQty:request.body.packageQty,
         packageDesc:request.body.packageDesc,
-        packageImage:'http://localhost:3000/images/'+request.file.filename,
+        packageImage:"https://firebasestorage.googleapis.com/v0/b/imageupload-783bb.appspot.com/o/"+request.file.filename+"?alt=media&token=vanshpal",
         packageDay: request.body.packageDay,
         packageCategoryId:request.body.packageCategoryId
     })
@@ -79,7 +79,7 @@ exports.packageUpdate=(request,response)=>{
             packageQty:request.body.packageQty,
             packageDesc:request.body.packageDesc,
             packageDay:request.body.packageDay,
-            packageImage:'http://localhost:3000/images/'+request.file.filename,
+            packageImage:"https://firebasestorage.googleapis.com/v0/b/imageupload-783bb.appspot.com/o/"+request.file.filename+"?alt=media&token=vanshpal",
             packageCategoryId:request.body.packageCategoryId
         }})
         .then(result=>{
