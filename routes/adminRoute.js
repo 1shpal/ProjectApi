@@ -29,15 +29,15 @@ router.delete('/delete-package',tokenVarification.varifyToken,packageController.
 router.get("/available-package",tokenVarification.varifyToken,packageController.availablePackages);
 router.get("/today-meal-option",tokenVarification.varifyToken,packageController.todayMealOption);
 
-router.post('/add-item',tokenVarification.varifyToken,upload.single("itemImage"),firebase.fileUpload,itemController.addItem);
+router.post('/add-item',upload.single("itemImage"),firebase.fileUpload,itemController.addItem);
 router.get('/view-item',tokenVarification.varifyToken,itemController.viewItem);
 router.post('/update-item',tokenVarification.varifyToken,upload.single("itemImage"),firebase.fileUpload,itemController.updateItem);
 router.delete('/delete-item',tokenVarification.varifyToken,itemController.deleteItem);
-
-
-
 router.post('/login',adminController.login);
 
+
 module.exports =router;
+
+
 //625004acecef3b446ef271f1
 //625019f1ecef3b446ef271f3   product

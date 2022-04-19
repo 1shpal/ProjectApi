@@ -1,5 +1,7 @@
 const express =require('express');
+const cors = require('cors')
 const app = express();
+app.use(cors());
 const bodyParser =  require('body-parser');
 const mongoose = require('mongoose');
 const db ="mongodb+srv://Mohit_MongoDB:Mongo%40143214@cluster0.1m47d.mongodb.net/book-my-meal?retryWrites=true&w=majority"
